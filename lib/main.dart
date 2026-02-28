@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goalify/core/theme/app_theme.dart';
 import 'package:goalify/core/theme/theme_cubit.dart';
+import 'package:goalify/features/splash/presentation/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,20 +14,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => ThemeCubit(), 
-         child: BlocBuilder<ThemeCubit, ThemeMode>(
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, state) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
 
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: state,
-
-         
-        );
-      },
-    ));
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: state,
+            home: SplashScreen(),
+          );
+        },
+      ),
+    );
   }
 }
-
